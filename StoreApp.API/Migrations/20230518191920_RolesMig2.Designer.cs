@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreApp.API.Data;
 
@@ -11,9 +12,11 @@ using StoreApp.API.Data;
 namespace StoreApp.API.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    partial class StoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230518191920_RolesMig2")]
+    partial class RolesMig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,21 +55,21 @@ namespace StoreApp.API.Migrations
                         new
                         {
                             Id = "c32f66ed-c960-4cb7-a468-90662e1fb37a",
-                            ConcurrencyStamp = "9651a708-9b0a-45c3-a1e7-1a5390df3b09",
+                            ConcurrencyStamp = "0bf2810a-9bd8-4866-afce-499b3229a72e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "ddc1ddb9-2495-40d6-b278-633bc6ca29c6",
-                            ConcurrencyStamp = "03c4f32e-0b3d-4d80-ad66-e1ec530580ab",
+                            ConcurrencyStamp = "d5245216-dbbd-4447-85b0-62b73ab3100b",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "4a8a52b2-8c3d-45d2-9fe5-ff01895c5c29",
-                            ConcurrencyStamp = "e0dcc82c-76be-49b3-aae0-25afe6db3a36",
+                            ConcurrencyStamp = "cbb371d0-4837-4eaa-9285-80bc88a904a1",
                             Name = "Visitor",
                             NormalizedName = "VISITOR"
                         });
@@ -157,18 +160,6 @@ namespace StoreApp.API.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
-                            RoleId = "c32f66ed-c960-4cb7-a468-90662e1fb37a"
-                        },
-                        new
-                        {
-                            UserId = "ddc1ddb9-2495-40d6-b278-633bc6ca29c6",
-                            RoleId = "ddc1ddb9-2495-40d6-b278-633bc6ca29c6"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -312,16 +303,16 @@ namespace StoreApp.API.Migrations
                             Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
                             AuthLevel = 2,
-                            ConcurrencyStamp = "21d5279a-c9d1-4444-a5e8-0c6a1f87a2ee",
+                            ConcurrencyStamp = "3dcab904-614d-416f-91fe-cb1b2f47c03a",
                             Email = "admin@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
                             Password = "123!Qaz123",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDB1xSQDYxWUqkiO3AfOgVxUw+HCTLsEKcXwtXUAj77KUal2dQsvb6MWukmukYVpoA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECEoLt5O3+N77X/cG0NOxssW9JohbWl+enLD/cii6mKQIeZvfKUvNNhJ8DD8UUA8vA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cfc8be49-f793-424f-b89e-0ff8971487e1",
+                            SecurityStamp = "f66c0265-3d0f-4327-a2cb-2f6ad262da47",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -330,16 +321,16 @@ namespace StoreApp.API.Migrations
                             Id = "ddc1ddb9-2495-40d6-b278-633bc6ca29c6",
                             AccessFailedCount = 0,
                             AuthLevel = 1,
-                            ConcurrencyStamp = "6708c064-891a-4c41-ad88-7ed1ec369ef9",
+                            ConcurrencyStamp = "99cd9bfc-6e56-458a-aa0d-e0f70ed21aee",
                             Email = "yoni@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "YONI@EMAIL.COM",
                             NormalizedUserName = "YONI",
                             Password = "123!Qaz123",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDPkXOX5i4ItMST1qTNlyKmJ2/nDpVqUoKBnXNl5VFuy3WisM2f9TitXoLxBwkSHUA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJDxCd76WTaoB04bsEcntpzJl8RfOumITFQKS1Z36RZE6dXZC3PzGDR4a73ohL3Ngw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e5cce59d-5ee2-4a27-8d7b-310db078c934",
+                            SecurityStamp = "e8bb49b8-3f18-466d-85c3-c54e050c8747",
                             TwoFactorEnabled = false,
                             UserName = "Yoni"
                         });
