@@ -4,7 +4,7 @@ using StoreApp.API.Data.Entities;
 
 namespace StoreApp.API.Data.Configurations
 {
-    public class UserConfigurations : IEntityTypeConfiguration<User>
+    /*public class UserConfigurations : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
@@ -12,7 +12,7 @@ namespace StoreApp.API.Data.Configurations
                 new User
                 {
                     Id = 1,
-                    Name = "Yoni",
+                    UserName = "Yoni",
                     Email = "yoni@email.com",
                     Password = "1234",
                     AuthLevel = AuthLevels.User
@@ -20,7 +20,7 @@ namespace StoreApp.API.Data.Configurations
                 new User
                 {
                     Id = 2,
-                    Name = "Admin",
+                    UserName = "Admin",
                     Email = "admin@email.com",
                     Password = "1234",
                     AuthLevel = AuthLevels.Admin
@@ -28,5 +28,5 @@ namespace StoreApp.API.Data.Configurations
                 }
             );
         }
-    }
+    }*/
 }
