@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using StoreApp.API.Data;
+using StoreApp.API.Data.Configurations;
 using StoreApp.API.Data.Entities;
 using System.Text;
 
@@ -16,12 +17,17 @@ builder.Services.AddDbContextFactory<StoreDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Identity Core
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
     .AddTokenProvider<DataProtectorTokenProvider<User>>("StoreAPI")
     .AddEntityFrameworkStores<StoreDbContext>()
     .AddDefaultTokenProviders();
 
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+
+// Jwt Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // "Bearer"
@@ -35,10 +41,10 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero,
-        ValidIssuer = "StoreAPI",
-        ValidAudience = "StoreAPIClient",
+        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+        ValidAudience = builder.Configuration["JwtSettings:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey
-            (Encoding.UTF8.GetBytes("this is my amazing very Secret key for authentication"!))
+            (Encoding.UTF8.GetBytes(builder.Configuration["Keys:Key"]))
     };
 });
 
@@ -84,6 +90,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
